@@ -6,5 +6,14 @@
 		<class>com.example.materialdata.entity.Spestmtm</class>
 		<class>com.example.materialdata.entity.SpestmtmPK</class>
 		<class>com.example.materialdata.entity.InwrhmtmPK</class>
+		<class>com.example.materialdata.entity.Applicant</class>
+		<class>com.example.materialdata.entity.Application</class>
+		<class>com.example.materialdata.entity.ApplicationPK</class>
+		<class>com.example.materialdata.entity.WiringLandDetail</class>
+		<class>com.example.materialdata.entity.WiringLandDetailPK</class>
+		<class>com.example.materialdata.entity.Spestlab</class>
+		<class>com.example.materialdata.entity.SpestlabPK</class>
+		<class>com.example.materialdata.entity.Splabrat</class>
+		<class>com.example.materialdata.entity.SplabratPK</class>
 	</persistence-unit>
 </persistence>

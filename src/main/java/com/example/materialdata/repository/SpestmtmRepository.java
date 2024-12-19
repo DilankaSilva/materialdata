@@ -19,6 +19,7 @@ public interface SpestmtmRepository extends JpaRepository<Spestmtm, SpestmtmPK> 
 			"JOIN Inwrhmtm w ON s.id.matCd = w.id.matCd AND w.id.deptId = s.id.deptId " +
 			"WHERE s.id.deptId = :deptId " +
 			"AND s.id.connectionType = :connectionType " +
+			"AND w.status = 2"+
 			"AND s.id.wiringType = :wiringType " +
 			"AND s.id.phase = :phase " +
 			"ORDER BY s.id.matCd")
