@@ -6,6 +6,15 @@
 		<class>com.example.materialdata.entity.Spestmtm</class>
 		<class>com.example.materialdata.entity.SpestmtmPK</class>
 		<class>com.example.materialdata.entity.InwrhmtmPK</class>
+
+		<class>com.example.materialdata.entity.Pcesthtt</class>
+		<class>com.example.materialdata.entity.PcesthttPK</class>
+		<class>model.Pcestdtt</class>
+		<class>model.PcestdttPK</class>
+		<class>model.Spestlab</class>
+		<class>model.SpestlabPK</class>
+		<class>com.example.materialdata.entity.Pcestdtt</class>
+		<class>com.example.materialdata.entity.PcestdttPK</class>
 		<class>com.example.materialdata.entity.Applicant</class>
 		<class>com.example.materialdata.entity.Application</class>
 		<class>com.example.materialdata.entity.ApplicationPK</class>
