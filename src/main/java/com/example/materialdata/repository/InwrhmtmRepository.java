@@ -14,7 +14,7 @@ import com.example.materialdata.entity.InwrhmtmPK;
 @Repository
 public interface InwrhmtmRepository extends JpaRepository<Inwrhmtm, InwrhmtmPK> {
 
-    @Query("SELECT DISTINCT new com.example.materialdata.dto.AvailableMaterial(m.matNm, m.unitPrice, w.qtyOnHand) " +
+    @Query("SELECT DISTINCT new com.example.materialdata.dto.AvailableMaterial(m.matNm, m.unitPrice, w.qtyOnHand, w.uomCd, w.id.matCd ) " +
            "FROM Inwrhmtm w " +
            "JOIN Inmatm m ON w.id.matCd = m.matCd " +
            "WHERE w.status = 2 " +

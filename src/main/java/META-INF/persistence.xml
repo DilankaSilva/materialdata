@@ -9,10 +9,6 @@
 
 		<class>com.example.materialdata.entity.Pcesthtt</class>
 		<class>com.example.materialdata.entity.PcesthttPK</class>
-		<class>model.Pcestdtt</class>
-		<class>model.PcestdttPK</class>
-		<class>model.Spestlab</class>
-		<class>model.SpestlabPK</class>
 		<class>com.example.materialdata.entity.Pcestdtt</class>
 		<class>com.example.materialdata.entity.PcestdttPK</class>
 		<class>com.example.materialdata.entity.Applicant</class>

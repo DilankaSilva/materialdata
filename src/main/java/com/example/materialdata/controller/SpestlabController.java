@@ -13,6 +13,7 @@ import com.example.materialdata.entity.Spestlab;
 import com.example.materialdata.service.SpestlabService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000") 
 @RequestMapping("/api")
 public class SpestlabController {
 	

@@ -18,7 +18,7 @@ public class SplabratPK implements Serializable {
 	@Column(name="DEPT_ID", insertable=false, updatable=false)
 	private String deptId;
 
-	@Column(name="\"YEAR\"")
+	@Column(name="YEAR")
 	private String year;
 
 	public SplabratPK() {

@@ -15,7 +15,8 @@ public interface AvailablelabourRepository extends JpaRepository<Splabrat,Splabr
 	
 	@Query("SELECT new com.example.materialdata.dto.AvailableLabourDTO(a.id.labourCode, a.labourName, a.unitPrice, a.labourHours) "
 	        + "FROM Splabrat a "
-	        + "WHERE a.id.deptId = :deptId")
+	        + "WHERE a.id.deptId = :deptId "
+	        + "AND a.id.year= '2013'")
 	List<AvailableLabourDTO> findAvailableLabour(@Param("deptId") String deptId);
 
 }

@@ -122,8 +122,16 @@ public class MaterialController {
  
     		@GetMapping("/labours")
     		public List<AvailableLabourDTO>getAvailablelab(@RequestParam String deptId){
+    			try {
     			List<AvailableLabourDTO> availableLabourDTO=availablelabourRepository.findAvailableLabour(deptId);
     			return availableLabourDTO;
+
+    			} catch(IllegalArgumentException e) {
+    				e.printStackTrace();
+    				throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,
+    		   				"An unexpected error occured while processing the application",e);
+    			}
+
     		}
     	     
 
