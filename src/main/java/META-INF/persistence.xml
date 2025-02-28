@@ -20,5 +20,6 @@
 		<class>com.example.materialdata.entity.SpestlabPK</class>
 		<class>com.example.materialdata.entity.Splabrat</class>
 		<class>com.example.materialdata.entity.SplabratPK</class>
+		<class>com.example.materialdata.entity.Sauserm</class>
 	</persistence-unit>
 </persistence>
