@@ -15,13 +15,12 @@ public class UserService {
     @Autowired
     private SausermRepository sausermRepository;
 
-    // Hard-coded default password
-    private static final String DEFAULT_PASSWORD = "default123";
+    // default password
+    private static final String DEFAULT_PASSWORD = "1234";
 
     public LoginResponse authenticateUser (LoginRequest loginRequest) {
         String userId = loginRequest.getUserId();
         
-        // Use case-insensitive search
         Sauserm user = sausermRepository.findByUserIdIgnoreCase(userId);
         
         if (user == null) {
@@ -33,7 +32,6 @@ public class UserService {
             return new LoginResponse(false, null, null, "Invalid password");
         }
         
-        // Authentication successful, return user details
         return new LoginResponse(
             true,
             user.getRptUser (),
