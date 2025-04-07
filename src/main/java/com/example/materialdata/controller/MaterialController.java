@@ -5,6 +5,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.example.materialdata.dto.ApplicationMaterialDto;
 import com.example.materialdata.dto.AvailableLabourDTO;
 import com.example.materialdata.dto.AvailableMaterial;
+import com.example.materialdata.dto.ErrorResponse;
 import com.example.materialdata.dto.MaterialDTO;
 import com.example.materialdata.entity.Applicant;
 import com.example.materialdata.entity.Application;
@@ -46,15 +48,40 @@ public class MaterialController {
         return inmatmService.getMaterialsByName(name);
     }
     
+//    @GetMapping(value ="/getDetails", produces = "application/json")
+//    public List<MaterialDTO> getMaterials(
+//
+//            @RequestParam String deptId,
+//            @RequestParam long connectionType,
+//            @RequestParam String wiringType,
+//            @RequestParam long phase) {
+//        return inmatmService.getMaterials(deptId, connectionType, wiringType, phase);
+//
+//    }
+    
     @GetMapping(value ="/getDetails", produces = "application/json")
-    public List<MaterialDTO> getMaterials(
-
-            @RequestParam String deptId,
-            @RequestParam long connectionType,
-            @RequestParam String wiringType,
-            @RequestParam long phase) {
-        return inmatmService.getMaterials(deptId, connectionType, wiringType, phase);
-
+    public ResponseEntity<?> getMaterials(
+        @RequestParam String deptId,
+        @RequestParam long connectionType,
+        @RequestParam String wiringType,
+        @RequestParam long phase) {
+        
+        try {
+            List<MaterialDTO> materials = inmatmService.getMaterials(deptId, connectionType, wiringType, phase);
+            return ResponseEntity.ok(materials);
+        } catch (IllegalArgumentException e) {
+            // Handle validation errors
+            return ResponseEntity.badRequest()
+                .body(new ErrorResponse("Invalid input parameters", e.getMessage()));
+        } catch (DataAccessException e) {
+            // Handle database-related errors
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(new ErrorResponse("Database error", "Unable to retrieve materials data"));
+        } catch (Exception e) {
+            // Handle any other unexpected errors
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(new ErrorResponse("Unexpected error", e.getMessage()));
+        }
     }
     
     @GetMapping("/available")
@@ -74,14 +101,14 @@ public class MaterialController {
     	
         List<AvailableMaterial> availableMaterials = inwrhmtmRepository.findavailableMaterial(deptId);
         
-        // Create a set of unique identifiers for default materials (e.g., IDs or names)
+       
         Set<String> defaultMaterialNames = defaultMaterials.stream()
-                .map(MaterialDTO::getMaterialName) // Replace 'getName' with the actual method to get the identifier
+                .map(MaterialDTO::getMaterialName) 
                 .collect(Collectors.toSet());
 
         // Filter out the default materials from the available materials
         return availableMaterials.stream()
-                .filter(material -> !defaultMaterialNames.contains(material.getMaterialName())) // Replace 'getName' with appropriate method
+                .filter(material -> !defaultMaterialNames.contains(material.getMaterialName())) 
                 .collect(Collectors.toList());
 
     }
