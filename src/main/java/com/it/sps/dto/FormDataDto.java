@@ -7,6 +7,7 @@ public class FormDataDto {
     private ApplicationDto applicationDto;
     private WiringLandDetailDto wiringLandDetailDto;
     private ApplicantDto applicantDto;
+    private ApplicationReferenceDto applicationReferenceDto;
 
     public ApplicationDto getApplicationDto() {
         return applicationDto;
@@ -30,5 +31,13 @@ public class FormDataDto {
 
     public void setApplicantDto(ApplicantDto applicantDto) {
         this.applicantDto = applicantDto;
+    }
+
+    public ApplicationReferenceDto getApplicationReferenceDto() {
+        return applicationReferenceDto;
+    }
+
+    public void setApplicationReferenceDto(ApplicationReferenceDto applicationReferenceDto) {
+        this.applicationReferenceDto = applicationReferenceDto;
     }
 }
